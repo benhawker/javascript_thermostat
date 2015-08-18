@@ -12,7 +12,7 @@ describe("Thermostat", function() {
     });
 
     it("starts with power saving on", function() {
-      expect(thermostat.powerSaving).toEqual("on");
+      expect(thermostat.powerSaving).toEqual("On");
     });
 
  });
@@ -20,12 +20,17 @@ describe("Thermostat", function() {
   describe("power saving toggle on and off", function() {
 
     it("can be turned off, when it is on", function() {
-      expect(thermostat.switchOffPowerSave()).toEqual("off")
+      expect(thermostat.switchOffPowerSave()).toEqual("Off")
     });
 
     it("can be turned on, whenit is off", function() {
       thermostat.switchOffPowerSave();
-      expect(thermostat.switchOnPowerSave()).toEqual("on")
+      expect(thermostat.switchOnPowerSave()).toEqual("On")
+    });
+
+    it("toggles on and off", function() {
+      thermostat.togglePowerSave();
+      expect(thermostat.powerSaving).toEqual("Off")
     });
 
   });

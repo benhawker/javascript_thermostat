@@ -1,6 +1,6 @@
 var Thermostat = function() {
   this.temperature = DEFAULT_TEMP;
-  this.powerSaving = "on";
+  this.powerSaving = "On";
   this.energyColor = "yellow";
   this.powerSaveOnMaximumTemp = 25;
   this.powerSaveOffMaximumTemp = 32;
@@ -13,11 +13,20 @@ const DEFAULT_TEMP = 20
 
 
 Thermostat.prototype.switchOffPowerSave = function() {
-	return this.powerSaving = "off";
+	return this.powerSaving = "Off";
 };
 
 Thermostat.prototype.switchOnPowerSave = function() {
-	return this.powerSaving = "on";
+	return this.powerSaving = "On";
+};
+
+Thermostat.prototype.togglePowerSave = function() {
+  if (this.powerSaving === "On") {
+    return this.powerSaving = "Off";
+  }
+  else if (this.powerSaving === "Off") {
+    return this.powerSaving = "On";
+  }; 
 };
 
 Thermostat.prototype.up = function() {
@@ -55,11 +64,11 @@ Thermostat.prototype.changeEnergyColor = function() {
 
 
 Thermostat.prototype._powerSaveIsOn = function() {
-  return (this.powerSaving === "on" && this.temperature === this.powerSaveOnMaximumTemp)
+  return (this.powerSaving === "On" && this.temperature === this.powerSaveOnMaximumTemp)
 };
 
 Thermostat.prototype._powerSaveIsOff = function() {
-  return (this.powerSaving === "off" && this.temperature === this.powerSaveOffMaximumTemp)
+  return (this.powerSaving === "Off" && this.temperature === this.powerSaveOffMaximumTemp)
 };
 
 Thermostat.prototype._belowMinimumTemperature = function() {

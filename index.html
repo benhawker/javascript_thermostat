@@ -6,21 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Thermostat</title>
+    <title>Thermostat App</title>
 
 		<link rel="stylesheet" href="stylesheet.css">
 		<link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
   	</head>
   
-  <body>
-  	<div class="container">
-  	<header>Thermostat</header>
+    <body>
+  	 <div class="container">
 
-  	<section>
-  	<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-  	</section>
-  	</div>
+    <div class="left">
+    <div id="temperature">20</div><span>C</span>
+    <div class="buttons">
+      <a href="#" id="up">Up</a>
+      <a href="#" id="down">Down</a>
+      <a href="#" id="reset">Reset</a>
+      <a href="#" id="power">Power Saving Mode</a><div id="power_save_status">On</div>
+    </div>
+    </div>
+    
+
+    <div id="right">
+      <p>Thermostat</p>
+    </div>
+
+     <div id="footer"> I am a footer </div>
+
+    </div>
+
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="src/Thermostat.js"></script>
+  <script src="src/app.js"></script>
+  	
   </body>
 
 
