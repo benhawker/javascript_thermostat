@@ -1,10 +1,15 @@
 var Thermostat = function() {
   this.temperature = DEFAULT_TEMP;
   this.powerSaving = "on";
-  this.energyColor = "yellow"
+  this.energyColor = "yellow";
+  this.powerSaveOnMaximumTemp = 25;
+  this.powerSaveOffMaximumTemp = 32;
+  this.minimumTemperature = 10;
+  this.greenTemperature = 18;
+  this.yellowTemperature = 25;
 };
 
-var DEFAULT_TEMP = 20;
+const DEFAULT_TEMP = 20
 
 
 Thermostat.prototype.switchOffPowerSave = function() {
@@ -16,17 +21,17 @@ Thermostat.prototype.switchOnPowerSave = function() {
 };
 
 Thermostat.prototype.up = function() {
-  if (this.powerSaving === "on" && this.temperature === 25) {
+  if (this._powerSaveIsOn()) {
   	throw new Error ("Power Saving is On. Temperature can't go above 25")
   }
-  else if (this.powerSaving === "off" && this.temperature === 32) {
+  else if (this._powerSaveIsOff()) {
   	throw new Error ("Power Saving is Off. Temperature can't go above 32")
   }
   return this.temperature += 1;
 };
 
 Thermostat.prototype.down = function() {
-  if (this.temperature <= 10) {
+  if (this._belowMinimumTemperature()) {
     throw new Error ("Temperature can't go below 10")
   }
   return this.temperature -= 1;
@@ -37,10 +42,10 @@ Thermostat.prototype.resetThermostat = function() {
 };
 
 Thermostat.prototype.changeEnergyColor = function() {
-	if (this.temperature < 18) {
+	if (this._isGreenTemperature()) {
 		return this.energyColor = "green";
 	}
-	else if (this.temperature >= 18 && this.temperature < 25) {
+	else if (this._isYellowTemperature()) {
 		return this.energyColor = "yellow";
 	}
 	else {
@@ -48,5 +53,25 @@ Thermostat.prototype.changeEnergyColor = function() {
 	}
 };
 
+
+Thermostat.prototype._powerSaveIsOn = function() {
+  return (this.powerSaving === "on" && this.temperature === this.powerSaveOnMaximumTemp)
+};
+
+Thermostat.prototype._powerSaveIsOff = function() {
+  return (this.powerSaving === "off" && this.temperature === this.powerSaveOffMaximumTemp)
+};
+
+Thermostat.prototype._belowMinimumTemperature = function() {
+  return (this.temperature <= this.minimumTemperature)
+};
+
+Thermostat.prototype._isGreenTemperature = function() {
+  return (this.temperature < this.greenTemperature)
+};
+
+Thermostat.prototype._isYellowTemperature = function() {
+  return (this.temperature >= this.greenTemperature && this.temperature < this.yellowTemperature)
+};
 
 

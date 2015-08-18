@@ -17,7 +17,6 @@ describe("Thermostat", function() {
 
  });
 
-
   describe("power saving toggle on and off", function() {
 
     it("can be turned off, when it is on", function() {
@@ -104,12 +103,6 @@ describe("Thermostat", function() {
       }).toThrowError("Power Saving is Off. Temperature can't go above 32")
     });
   });
-
-
-
-
-
-
 
 });
 
