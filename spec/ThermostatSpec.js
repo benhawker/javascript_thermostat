@@ -33,16 +33,50 @@ describe("Thermostat", function() {
 
   describe('temperature changes', function() {
   	it('will increase temperature by 1', function() {
-  		thermostat.temperature = 22
-  		thermostat.up()
+  		thermostat.temperature = 22;
+  		thermostat.up();
   		expect(thermostat.temperature).toEqual(23)
   	});
 
   	it('will decrease temperature by 1', function() {
-  		thermostat.temperature = 22
-  		thermostat.down()
+  		thermostat.temperature = 22;
+  		thermostat.down();
   		expect(thermostat.temperature).toEqual(21)
   	});
+  });
+
+
+  describe("reset", function(){
+    it("will reset the temp to 20", function(){
+      thermostat.temperature = 22;
+      thermostat.resetThermostat();
+      expect(thermostat.temperature).toEqual(20)
+    });
+  });
+
+  describe("energy usage colour scheme", function(){
+
+    it("on start or reset the color is yellow", function() {
+      expect(thermostat.energyColor).toEqual("yellow")
+    });
+
+    it("will be green when the temp is below 18", function() {
+      thermostat.temperature = 17;
+      thermostat.changeEnergyColor();
+      expect(thermostat.energyColor).toEqual("green")
+    });
+
+    it("will be yellow when the temp is below >=18 and <25", function() {
+      thermostat.temperature = 21;
+      thermostat.changeEnergyColor();
+      expect(thermostat.energyColor).toEqual("yellow")
+    });
+
+    it("will be red when the temp is above >25", function() {
+      thermostat.temperature = 26;
+      thermostat.changeEnergyColor();
+      expect(thermostat.energyColor).toEqual("red")
+    });
   });
 
 
