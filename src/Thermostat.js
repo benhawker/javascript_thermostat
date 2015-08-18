@@ -16,6 +16,12 @@ Thermostat.prototype.switchOnPowerSave = function() {
 };
 
 Thermostat.prototype.up = function() {
+  if (this.powerSaving === "on" && this.temperature === 25) {
+  	throw new Error ("Power Saving is On. Temperature can't go above 25")
+  }
+  else if (this.powerSaving === "off" && this.temperature === 32) {
+  	throw new Error ("Power Saving is Off. Temperature can't go above 32")
+  }
   return this.temperature += 1;
 };
 
@@ -40,6 +46,7 @@ Thermostat.prototype.changeEnergyColor = function() {
 	else {
 		return this.energyColor = "red";
 	}
-
 };
+
+
 

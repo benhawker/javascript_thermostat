@@ -88,6 +88,23 @@ describe("Thermostat", function() {
   	});
   });
 
+  describe("maximum temperature", function(){
+    it("has a max temp of 25 when power saving is on", function(){
+      thermostat.temperature = 25;
+      expect(function() {
+        thermostat.up();
+      }).toThrowError("Power Saving is On. Temperature can't go above 25")
+    });
+
+    it("has a max temp of 32 when power saving is off", function(){
+      thermostat.switchOffPowerSave();
+      thermostat.temperature = 32;
+      expect(function() {
+      thermostat.up();
+      }).toThrowError("Power Saving is Off. Temperature can't go above 32")
+    });
+  });
+
 
 
 
