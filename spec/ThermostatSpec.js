@@ -31,6 +31,25 @@ describe("Thermostat", function() {
 
   });
 
+  describe('temperature changes', function() {
+  	it('will increase temperature by 1', function() {
+  		thermostat.temperature = 22
+  		thermostat.up()
+  		expect(thermostat.temperature).toEqual(23)
+  	});
+
+  	it('will decrease temperature by 1', function() {
+  		thermostat.temperature = 22
+  		thermostat.down()
+  		expect(thermostat.temperature).toEqual(21)
+  	});
+  });
+
+
+
+
+
+
+
 });
 
- 
