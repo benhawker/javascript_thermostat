@@ -79,6 +79,15 @@ describe("Thermostat", function() {
     });
   });
 
+  describe('minimum temperature', function() {
+  	it('cannot go below 10 degrees celsius', function() {
+  		thermostat.temperature = 10;
+  		expect(function() {
+  			thermostat.down();
+  		}).toThrowError("Temperature can't go below 10")
+  	});
+  });
+
 
 
 
